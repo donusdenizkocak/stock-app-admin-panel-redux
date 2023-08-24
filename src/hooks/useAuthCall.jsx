@@ -2,9 +2,11 @@ import React from 'react'
 import { useActionData } from 'react-router-dom'
 
  const useAuthCall = () => {
-  return (
-    <>
-    </>
-  )
+
+const login = () => {
+    
+}
+
+  return {}
 }
 export default useAuthCall
