@@ -6,11 +6,14 @@ import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { Formik,Form } from 'formik';
+import { Email, ErrorSharp } from "@mui/icons-material";
+import { TextField } from "@mui/material";
 
 
 
 const Login = () => {
-  
+  const loginScheme={}
   return (
     <Container maxWidth="lg">
       <Grid
@@ -47,6 +50,46 @@ const Login = () => {
           >
             Login
           </Typography>
+
+
+
+
+
+   
+    <Formik
+     initialValues={{email:"",password:""}}
+     validationSchema={loginScheme}
+     onSubmit={(values,actions) => {
+      //login(values) POST isteği
+      // navigate
+      actions.reset()
+      actions.setSubmitting(false)
+     }}
+    >
+      {({
+         values,
+         handleChange,
+         handleBlur,
+         errors,
+         touched
+         /* and other goodies */
+       }) => (
+        <Form>
+          <Box>
+             <TextField
+             label="Email"
+             name="email"
+             id="email"
+             type="email"
+             variant="outlined"
+             error={touched.email && Boolean(errors.email)}
+             helperText={touched.email && errors.email}
+             />
+          </Box>
+        </Form>
+       )}
+      
+    </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
