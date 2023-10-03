@@ -118,7 +118,9 @@ const Login = () => {
              helperText={touched.password && errors.password}
              required
              />
-             <LoadingButton type="submit" variant="contained" loading={loading}>Submit</LoadingButton>
+             <LoadingButton type="submit" variant="contained" loading={loading}>
+               Submit
+             </LoadingButton>
           </Box>
         </Form>
        )}
