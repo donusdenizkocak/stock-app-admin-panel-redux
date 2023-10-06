@@ -28,7 +28,7 @@ const Login = () => {
     .matches(/[a-z]/, "Password bir küçük harf içermelidir")
     .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
     .matches(/[!,?{}<>%&$#£+-.]+/, "Password bir özel karakter içermelidir")   
-     //regex için matches fonksiyonu kullanılıyor yup içim
+     //regex için matches fonksiyonu kullanılıyor yup için
   });
   return (
     <Container maxWidth="lg">
