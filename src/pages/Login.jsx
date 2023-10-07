@@ -11,13 +11,17 @@ import { TextField } from "@mui/material";
 import { object, string } from 'yup';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useSelector } from "react-redux";
+import useAuthCall  from "../hooks/useAuthCall";
 
 
 
 
 const Login = () => {
   const navigate=useNavigate()
-  const {loading}=useSelector((state) => state?.auth)
+  const {loading, currentUser,error}=useSelector((state) => state?.auth)
+
+  const {login} =useAuthCall()
+
   const loginScheme= object({  
     email: string().email("Lütfen valid bir email giriniz").required("Email zorunludur"),
     password: string()
@@ -77,6 +81,7 @@ const Login = () => {
      validationSchema={loginScheme}
      onSubmit={(values,actions) => {
       //login(values) POST isteği
+      login(values)
       // navigate
       actions.reset()
       actions.setSubmitting(false)
